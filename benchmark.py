@@ -10,7 +10,7 @@ def result_for_guess(guess, word):
   result = ["3"] * len(guess)
   yellows = {}
 
-  # Have to assign greens first because of repeated letter BS
+  # Have to assign greens first because of repeated letter BS why is it so complicated
   for pos in range(len(guess)):
     if guess[pos] == word[pos]:
       result[pos] = "1"
@@ -18,7 +18,7 @@ def result_for_guess(guess, word):
   word_without_green = [c for pos, c in enumerate(word) if result[pos] != "1"]
   for pos in range(len(guess)):
     if result[pos] == "1":
-      continue # green
+      continue
     if word_without_green.count(guess[pos]) - yellows.get(guess[pos], 0) > 0:
       result[pos] = "2"
       yellows[guess[pos]] = yellows.get(guess[pos], 0) + 1
@@ -48,6 +48,7 @@ def guesses_for_word(strategy, word, debug):
 debug = False
 wordle = Wordle(words, 5)
 
+# idk good enough for strategy registration not like ill have more than 3 lmao
 strategies = [SmolBrain(wordle, debug)]
 
 for strategy in strategies:
