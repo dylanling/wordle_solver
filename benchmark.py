@@ -1,6 +1,6 @@
 import statistics
 from wordle import Wordle
-from strategy import Strategy, SmolBrain
+from strategies import Strategy, BasicFrequency, IteratedFrequency
 
 word_file = "wordle-answers-alphabetical.txt"
 with open(word_file) as f:
@@ -49,7 +49,7 @@ debug = False
 wordle = Wordle(words, 5)
 
 # idk good enough for strategy registration not like ill have more than 3 lmao
-strategies = [SmolBrain(wordle, debug)]
+strategies = [BasicFrequency(wordle, debug), IteratedFrequency(wordle, debug)]
 
 for strategy in strategies:
   print(f"Running benchmark for {strategy.__class__.__name__}")

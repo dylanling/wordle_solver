@@ -1,6 +1,6 @@
 import sys
 from wordle import Wordle
-from strategy import Strategy, SmolBrain
+from strategies import Strategy, BasicFrequency
 
 word_file = sys.argv[1] if len(sys.argv) > 1 else "wordle-answers-alphabetical.txt"
 with open(word_file) as f:
@@ -8,7 +8,7 @@ with open(word_file) as f:
 
 size = 5
 wordle = Wordle(possible_words, size)
-strategy = SmolBrain(wordle)
+strategy = BasicFrequency(wordle)
 
 while len(strategy.wordle.possible_words) != 1:
   suggestion = strategy.suggestion()
