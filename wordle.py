@@ -3,7 +3,6 @@ class Wordle:
 
   def __init__(self, possible_words, size):
     self.all_possible_words = possible_words
-    self.frequencies = self.__build_letter_frequencies(possible_words)
     self.size = size
 
     # List of word guesses
@@ -80,10 +79,3 @@ class Wordle:
 
   def __update_possible_words(self):
     self.possible_words = {word for word in self.possible_words if self.__is_word_legal(word)}
-
-  def __build_letter_frequencies(self, possible_words):
-    frequencies = {letter: 0 for letter in Wordle.ALPHABET}
-    for word in possible_words:
-      for letter in word:
-        frequencies[letter] += 1
-    return frequencies
