@@ -1,6 +1,6 @@
 import sys
 from wordle import Wordle
-from strategies import Strategy, BasicFrequency
+from strategies import Strategy, BasicFrequency, IteratedFrequency
 
 word_file = sys.argv[1] if len(sys.argv) > 1 else "wordle-answers-alphabetical.txt"
 with open(word_file) as f:
@@ -8,7 +8,7 @@ with open(word_file) as f:
 
 size = 5
 wordle = Wordle(possible_words, size)
-strategy = BasicFrequency(wordle)
+strategy = IteratedFrequency(wordle)
 
 while len(strategy.wordle.possible_words) != 1:
   suggestion = strategy.suggestion()
